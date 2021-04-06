@@ -97,7 +97,7 @@ UULID: 0178a73c-3cc0-71ab-74b4-cc6c7190deae
  0178a73c3cc0      71ab74b4cc6c7190deae
 |------------|    |--------------------|
    Timestamp             Entropy
-    10 chars             16 chars
+    12 chars             20 chars
      48bits               80bits
      base32               base32
 ```

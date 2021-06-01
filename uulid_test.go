@@ -110,10 +110,6 @@ func TestUULID_Marshaler(t *testing.T) {
 		t.Errorf("not equal: %s and %s, error: %s", x, encoded, err)
 	}
 
-	if x, err := id.MarshalJSON(); err != nil || !bytes.Equal(x, encoded) {
-		t.Errorf("not equal: %s and %s, error: %s", x, encoded, err)
-	}
-
 	buf := make([]byte, 6)
 	if err = id.MarshalBinaryTo(buf); err != uulid.ErrBufferSize {
 		t.Errorf("expected ErrBufferSize, got: %s", err)
@@ -123,9 +119,6 @@ func TestUULID_Marshaler(t *testing.T) {
 		t.Errorf("expected ErrBufferSize, got: %s", err)
 	}
 
-	if err = id.MarshalJSONTo(buf); err != uulid.ErrBufferSize {
-		t.Errorf("expected ErrBufferSize, got: %s", err)
-	}
 }
 
 func TestUULID_Unmarshaler(t *testing.T) {
@@ -152,10 +145,6 @@ func TestUULID_Unmarshaler(t *testing.T) {
 		t.Error(err)
 	}
 
-	if err = id.UnmarshalJSON(encoded); err != nil {
-		t.Error(err)
-	}
-
 	if err = id.UnmarshalBinary(encoded); err != uulid.ErrDataSize {
 		t.Error(err)
 	}
@@ -164,9 +153,6 @@ func TestUULID_Unmarshaler(t *testing.T) {
 		t.Error(err)
 	}
 
-	if err = id.UnmarshalJSON([]byte(`123456789090`)); err != uulid.ErrDataSize {
-		t.Error(err)
-	}
 }
 
 func TestParse(t *testing.T) {

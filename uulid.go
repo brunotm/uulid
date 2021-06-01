@@ -189,22 +189,6 @@ func (id *UULID) UnmarshalText(data []byte) (err error) {
 	return parse(data, id)
 }
 
-// MarshalJSONTo writes the UULID as a string to the given buffer.
-// ErrBufferSize is returned when len(dst) != EncodedSize.
-func (id UULID) MarshalJSONTo(dst []byte) (err error) {
-	return id.MarshalTextTo(dst)
-}
-
-// MarshalJSON implements the json.Marshaler interface.
-func (id UULID) MarshalJSON() (data []byte, err error) {
-	return id.MarshalText()
-}
-
-// UnmarshalJSON implements the json.Unmarshaler interface.
-func (id *UULID) UnmarshalJSON(data []byte) (err error) {
-	return parse(data, id)
-}
-
 // Scan implements the sql.Scanner interface.
 // It supports scanning a string or byte slice.
 func (id *UULID) Scan(src interface{}) (err error) {
